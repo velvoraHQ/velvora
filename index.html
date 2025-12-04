@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VELVORA - Luxury Clothing</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: #000;
+            background-color: #fff;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            z-index: 100;
+            padding: 20px 0;
+            transition: all 0.3s ease;
+        }
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav h1 {
+            font-size: 24px;
+            font-weight: 700;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+        nav ul li {
+            margin-left: 30px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #000;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        nav ul li a:hover {
+            color: #666;
+        }
+        /* Hero Section */
+        #hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background-color: #f8f8f8;
+            padding: 0 20px;
+        }
+        #hero h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        #hero p {
+            font-size: 24px;
+            font-weight: 300;
+            margin-bottom: 40px;
+        }
+        #hero a {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #000;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+        #hero a:hover {
+            background-color: #333;
+        }
+        /* Collections Section */
+        #collections {
+            padding: 100px 0;
+            background-color: #fff;
+        }
+        #collections h2 {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 600;
+            margin-bottom: 50px;
+        }
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .product-card {
+            background-color: #f8f8f8;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .product-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+        .product-card h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .product-card p {
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+        .product-card .price {
+            font-size: 18px;
+            font-weight: 700;
+        }
+        /* About Section */
+        #about {
+            padding: 100px 0;
+            background-color: #f8f8f8;
+        }
+        #about .container {
+            max-width: 800px;
+        }
+        #about h2 {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 600;
+            margin-bottom: 50px;
+        }
+        #about p {
+            font-size: 18px;
+            line-height: 1.8;
+            text-align: center;
+        }
+        /* Contact Section */
+        #contact {
+            padding: 100px 0;
+            background-color: #fff;
+        }
+        #contact h2 {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 600;
+            margin-bottom: 50px;
+        }
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 16px;
+        }
+        .contact-form button {
+            width: 100%;
+            padding: 15px;
+            background-color: #000;
+            color: #fff;
+            border: none;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .contact-form button:hover {
+            background-color: #333;
+        }
+        /* Footer */
+        footer {
+            background-color: #000;
+            color: #fff;
+            padding: 40px 0;
+            text-align: center;
+        }
+        footer .social-icons {
+            margin-bottom: 20px;
+        }
+        footer .social-icons a {
+            margin: 0 10px;
+            color: #fff;
+            font-size: 24px;
+            text-decoration: none;
+        }
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none; /* Hide nav links on mobile for simplicity */
+            }
+            #hero h1 {
+                font-size: 36px;
+            }
+            #hero p {
+                font-size: 18px;
+            }
+            .products {
+                grid-template-columns: 1fr;
+            }
+            #about p {
+                font-size: 16px;
+            }
+        }
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <h1>VELVORA</h1>
+            <ul>
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#collections">Collections</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="hero">
+        <div class="container">
+            <h1>VELVORA — Redefining Luxury</h1>
+            <p>Premium Wear. Premium You.</p>
+            <a href="#collections">Shop Now</a>
+        </div>
+    </section>
+
+    <section id="collections">
+        <div class="container">
+            <h2>Collections</h2>
+            <div class="products">
+                <div class="product-card fade-in">
+                    <img src="https://via.placeholder.com/300x300?text=Product+1" alt="Product 1">
+                    <h3>Elegant Blazer</h3>
+                    <p>Timeless design for the modern professional.</p>
+                    <div class="price">₹12,500</div>
+                </div>
+                <div class="product-card fade-in">
+                    <img src="https://via.placeholder.com/300x300?text=Product+2" alt="Product 2">
+                    <h3>Silk Dress</h3>
+                    <p>Luxurious fabric that drapes beautifully.</p>
+                    <div class="price">₹18,000</div>
+                </div>
+                <div class="product-card fade-in">
+                    <img src="https://via.placeholder.com/300x300?text=Product+3" alt="Product 3">
+                    <h3>Cashmere Sweater</h3>
+                    <p>Soft and warm for ultimate comfort.</p>
+                    <div class="price">₹15,200</div>
+                </div>
+                <div class="product-card fade-in">
+                    <img src="https://via.placeholder.com/300x300?text=Product+4" alt="Product 4">
+                    <h3>Leather Jacket</h3>
+                    <p>Edgy and sophisticated outerwear.</p>
+                    <div class="price">₹22,000</div>
+                </div>
+                <div class="product-card fade-in">
+                    <img src="https://via.placeholder.com/300x300?text=Product+5" alt="Product 5">
+                    <h3>Tailored Pants</h3>
+                    <p>Perfect fit for any occasion.</p>
+                    <div class="price">₹9,800</div>
+                </div>
+                <div class="product-card fade-in">
+                    <img src="https://via.placeholder.com/300x300?text=Product+6" alt="Product 6">
+                    <h3>Evening Gown</h3>
+                    <p>Stunning elegance for special nights.</p>
+                    <div class="price">₹25,000</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <h2>About Velvora</h2>
+            <p>VELVORA is not just a brand; it's a statement of unparalleled luxury and sophistication. Born from a passion for exquisite craftsmanship and timeless elegance, we curate collections that embody the essence of premium fashion. Each piece is meticulously designed to elevate your style, blending modern aesthetics with the finest materials. At VELVORA, we believe that true luxury is in the details – the perfect cut, the superior fabric, and the confidence it instills. Redefine your wardrobe with VELVORA, where premium wear meets premium you.</p>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <form class="contact-form" id="contactForm">
+                <input type="text" id="name" placeholder="Your Name" required>
+                <input type="email" id="email" placeholder="Your Email" required>
+                <textarea id="message" placeholder="Your Message" rows="5" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="social-icons">
+                <a href="#" aria-label="Facebook">F</a>
+                <a href="#" aria-label="Instagram">I</a>
+                <a href="#" aria-label="Twitter">T</a>
+            </div>
+            <p>&copy; 2023 VELVORA. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Fade-in animation on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        });
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Form validation
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (!name || !email || !message) {
+                alert('Please fill in all fields.');
+                return;
+            }
+            if (!emailRegex.test(email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+            alert('Message sent successfully!');
+            // Reset form
+            this.reset();
+        });
+    </script>
+</body>
+</html>
+
