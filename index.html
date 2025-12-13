@@ -313,63 +313,100 @@
         </div>
     </section>
 
-    <section id="contact">
-        <div class="container">
-            <h2>Contact Us</h2>
-            <form action="https://formspree.io/f/xqarlldd" method="POST">
-                <input type="text" id="name" placeholder="Your Name" required>
-                <input type="email" id="email" placeholder="Your Email" required>
-                <textarea id="message" placeholder="Your Message" rows="5" required></textarea>
-                <button type="submit">Send Message</button>
-            </form>
-        </div>
-    </section>
+<section id="contact">
+    <div class="container">
+        <h2>Contact Us / Feedback</h2>
+        <p>We'd love to hear from you. Send us your thoughts or inquiries.</p>
+        <form class="contact-form" id="contactForm" action="https://formspree.io/f/xqarlldd" method="POST">
+            <input type="hidden" name="_next" value="thankyou.html">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
+</section>
 
-    <footer>
-        <div class="container">
-            <div class="social-icons">
-                <a href="#" aria-label="Facebook">F</a>
-                <a href="#" aria-label="Instagram">I</a>
-                <a href="#" aria-label="Twitter">T</a>
-            </div>
-            <p>&copy; 2023 VELVORA. All rights reserved.</p>
-        </div>
-    </footer>
+<style>
+    /* Contact Section Styles - Matching VELVORA's luxury, minimal, black & white style */
+    #contact {
+        padding: 100px 0;
+        background-color: #f8f8f8;
+        font-family: 'Montserrat', sans-serif;
+        color: #000;
+    }
+    #contact .container {
+        max-width: 600px;
+        margin: 0 auto;
+        text-align: center;
+    }
+    #contact h2 {
+        font-size: 36px;
+        font-weight: 600;
+        margin-bottom: 20px;
+    }
+    #contact p {
+        font-size: 18px;
+        margin-bottom: 40px;
+        line-height: 1.6;
+    }
+    .contact-form {
+        background-color: #fff;
+        padding: 40px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .contact-form label {
+        display: block;
+        font-weight: 500;
+        margin-bottom: 8px;
+        text-align: left;
+        font-family: 'Montserrat', sans-serif;
+    }
+    .contact-form input,
+    .contact-form textarea {
+        width: 100%;
+        padding: 15px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 16px;
+        background-color: #fff;
+        color: #000;
+    }
+    .contact-form textarea {
+        resize: vertical;
+        min-height: 100px;
+    }
+    .contact-form button {
+        width: 100%;
+        padding: 15px;
+        background-color: #000;
+        color: #fff;
+        border: none;
+        font-size: 16px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        font-family: 'Montserrat', sans-serif;
+    }
+    .contact-form button:hover {
+        background-color: #333;
+    }
+    /* Responsive */
+    @media (max-width: 768px) {
+        #contact .container {
+            padding: 0 20px;
+        }
+        .contact-form {
+            padding: 20px;
+        }
+    }
+</style>
 
-    <script>
-        // Fade-in animation on scroll
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        });
-
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Form validation
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const name = document.getElementById('name').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const message = document.getElementById('message').value.trim();
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-            if (!name || !email || !message) {
-                alert('Please fill in all fields.');
-                return;
-            }
-            if (!emailRegex.test(email)) {
-                alert('Please enter a valid email address.');
-                return;
-            }
-            alert('Message sent successfully!');
-            // Reset form
-            this.reset();
-        });
-    </script>
-</body>
-</html>
+<script>
+    // No additional JS needed; Formspree handles submission, validation, and redirect to thankyou.html
+</script>
